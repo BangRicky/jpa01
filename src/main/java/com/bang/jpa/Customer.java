@@ -1,6 +1,7 @@
 package com.bang.jpa;
 
 import javax.persistence.*;
+import java.util.Date;
 
 /**
  * @author: jinbang
@@ -9,7 +10,7 @@ import javax.persistence.*;
 
 
 //关联数据表
-@Table(name="Jpa_Customers")
+@Table(name="jpa_customers")
 //持久化类
 @Entity
 public class Customer {
@@ -22,6 +23,27 @@ public class Customer {
     private String lastName;
     private String email;
     private int age;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createdTime; //Date为java.util.Date
+    @Temporal(TemporalType.DATE)
+    private Date birth;
+
+    public Date getCreatedTime() {
+        return createdTime;
+    }
+
+    public void setCreatedTime(Date createdTime) {
+        this.createdTime = createdTime;
+    }
+
+    public Date getBirth() {
+        return birth;
+    }
+
+    public void setBirth(Date birth) {
+        this.birth = birth;
+    }
 
     public Integer getId() {
         return id;
@@ -53,5 +75,17 @@ public class Customer {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", age=" + age +
+                ", createdTime=" + createdTime +
+                ", birth=" + birth +
+                '}';
     }
 }

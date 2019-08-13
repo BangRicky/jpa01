@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import java.util.Date;
 
 /**
  * @author: jinbang
@@ -29,6 +30,8 @@ public class SpringDataCrudTest {
         customer.setAge(12);
         customer.setEmail("12345@qq.com");
         customer.setLastName("tom");
+        customer.setBirth(new Date());
+        customer.setCreatedTime(new Date());
 
         //调用manager的方法，保存该对象信息
         manager.persist(customer);
